@@ -33,5 +33,9 @@ func Test_page(t *testing.T) {
 	query := db.Where("Continent = ? and IndepYear > ?", "Asia", 1900)
 	p := paginator.Page[Country]{CurrentPage: 1, PageSize: 15}
 	p.SelectPages(query)
-	log.Println(p)
+	log.Println(p.CurrentPage)
+	log.Println(p.PageSize)
+	log.Println(p.Total)
+	log.Println(p.Pages)
+	log.Println(p.Data)
 }

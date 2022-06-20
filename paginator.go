@@ -5,13 +5,13 @@ import (
 )
 
 // 标准分页结构体，接收最原始的DO
-// 建议在外部再建一个字段一样的结构体，用以接收DTO或VO
+// 建议在外部再建一个字段一样的结构体，用以将DO转换成DTO或VO
 type Page[T any] struct {
-	CurrentPage int64
-	PageSize    int64
-	Total       int64
-	Pages       int64
-	Data        []T
+	CurrentPage int64 `json:"currentPage"`
+	PageSize    int64 `json:"pageSize"`
+	Total       int64 `json:"total"`
+	Pages       int64 `json:"pages"`
+	Data        []T   `json:"data"`
 }
 
 // 各种查询条件先在query设置好后再放进来
