@@ -29,11 +29,11 @@ func (page *Page[T]) SelectPages(query *gorm.DB) (e error) {
 func Paginate[T any](page *Page[T]) func(db *gorm.DB) *gorm.DB {
 	return func(db *gorm.DB) *gorm.DB {
 		if page.CurrentPage <= 0 {
-			page.CurrentPage = 0
+			page.CurrentPage = 1
 		}
 		switch {
-		case page.PageSize > 100:
-			page.PageSize = 100 // 限制一下分页大小
+		case page.PageSize > 10000:
+			page.PageSize = 10000 // 限制一下分页大小
 		case page.PageSize <= 0:
 			page.PageSize = 10
 		}
